@@ -1,0 +1,25 @@
+{
+  "name": "retrov01",
+  "version": "1.0.0",
+  "description": "It is a smart AI study companion",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=18 <23"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "health": "node -e \"require('http').get('http://localhost:'+(process.env.PORT||3000)+'/health',r=>{let d='';r.on('data',c=>d+=c);r.on('end',()=>console.log(d))})\""
+  },
+  "author": "Syed Zaid Ali",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "groq-sdk": "^0.32.0",
+    "helmet": "^7.2.0",
+    "morgan": "^1.10.0",
+    "mongoose": "^8.18.2"
+  }
+}

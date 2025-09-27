@@ -1,0 +1,26 @@
+# Render Infrastructure as Code configuration (optional convenience)
+# Reference: https://render.com/docs/yaml-spec
+# After committing this file, you can use "New +" -> "Blueprint" in Render.
+
+services:
+  - type: web
+    name: retro-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      # Define MONGO_URI and GROQ_API_KEY in the Render Dashboard (not in repo)
+      # - key: MONGO_URI
+      #   sync: false
+      # - key: GROQ_API_KEY
+      #   sync: false
+    healthCheckPath: /health
+# To provision environment variables securely:
+# 1. Go to the service settings in Render UI
+# 2. Add MONGO_URI, GROQ_API_KEY, (optionally) CORS_ORIGIN
